@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Tomāti - 3RV Stādi{% endblock %}
+{% block content %}
+<section class="page-header">
+    <h1>Tomāti</h1>
+    <p>Atlasīšanai vari izvēlēties vairākas kategorijas vienlaicīgi. Rezultātos paliks tikai tie tomāti, kas atbilst visām izvēlētajām kategorijām.</p>
+</section>
+<form class="filters filters-panel" method="get">
+    <div class="filter-search-row">
+        <input type="text" name="q" value="{{ search }}" placeholder="Meklēt pēc nosaukuma">
+        <button class="button primary" type="submit">Filtrēt</button>
+        <a class="button secondary" href="{{ url_for('products_index') }}">Notīrīt</a>
+    </div>
+
+    <div class="filter-groups six-groups">
+        {% for group in groups %}
+        <fieldset>
+            <legend>{{ group['name'] }}</legend>
+            {% for category in categories_by_group[group['id']] %}
+            <label class="checkbox">
+                <input type="checkbox" name="category" value="{{ category['id'] }}" {% if category['id'] in selected_category_ids %}checked{% endif %}>
+                <span>{{ category['name'] }}</span>
+            </label>
+            {% endfor %}
+        </fieldset>
+        {% endfor %}
+
+        <fieldset>
+            <legend>Pieejamība</legend>
+            <label class="checkbox">
+                <input type="radio" name="availability" value="" {% if not selected_availability %}checked{% endif %}>
+                <span>Visi</span>
+            </label>
+            <label class="checkbox">
+                <input type="radio" name="availability" value="available" {% if selected_availability == 'available' %}checked{% endif %}>
+                <span>Pieejams</span>
+            </label>
+            <label class="checkbox">
+                <input type="radio" name="availability" value="unavailable" {% if selected_availability == 'unavailable' %}checked{% endif %}>
+                <span>Nav pieejams</span>
+            </label>
+        </fieldset>
+    </div>
+</form>
+<div class="products-grid">
+    {% for product in products %}
+    <a class="product-card" href="{{ url_for('product_show', product_id=product['id']) }}">
+        <img src="{{ url_for('static', filename='images/products/' + product['image']) }}" alt="{{ product['name'] }}">
+        <div class="product-card-body">
+            <h2>{{ product['name'] }}</h2>
+            <div class="card-meta">
+                <span>{{ "%.2f"|format(product['price']) }} €</span>
+                {% if product['available'] %}
+                <span class="badge available">Pieejams</span>
+                {% else %}
+                <span class="badge unavailable">Nav pieejams</span>
+                {% endif %}
+            </div>
+        </div>
+    </a>
+    {% else %}
+    <p>Nav atrasts neviens tomāts.</p>
+    {% endfor %}
+</div>
+{% endblock %}

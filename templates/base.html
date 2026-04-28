@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}3RV Stādi{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+</head>
+<body>
+<header class="site-header">
+    <a class="brand" href="{{ url_for('index') }}">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="3RV Stādi logo">
+        <span>3RV Stādi</span>
+    </a>
+    <nav class="main-nav">
+        <a href="{{ url_for('index') }}">Sākums</a>
+        <a href="{{ url_for('products_index') }}">Tomāti</a>
+        <a href="{{ url_for('about') }}">Par mums</a>
+        <a href="{{ url_for('contacts') }}">Kontakti</a>
+        {% if session.get('admin_logged_in') %}
+        <a href="{{ url_for('admin_dashboard') }}">Admin panelis</a>
+        <a href="{{ url_for('admin_logout') }}">Iziet</a>
+        {% endif %}
+    </nav>
+</header>
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <section class="messages">
+        {% for category, message in messages %}
+        <div class="message {{ category }}">{{ message }}</div>
+        {% endfor %}
+    </section>
+    {% endif %}
+{% endwith %}
+<main>
+    {% block content %}{% endblock %}
+</main>
+<footer class="site-footer">
+    <div>
+        <strong>3RV Stādi</strong>
+        <p>Valgunde, Priežu iela 10 · sia3rv@gmail.com · 28814014</p>
+    </div>
+</footer>
+</body>
+</html>

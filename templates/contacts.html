@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Kontakti - 3RV Stādi{% endblock %}
+{% block content %}
+<section class="contact-hero">
+    <div>
+        <p class="eyebrow">Sazinies ar mums</p>
+        <h1>Kontakti</h1>
+        <p>Raksti, zvani vai atbrauc uz vietas. Jautājumu vari nosūtīt arī caur formu.</p>
+    </div>
+</section>
+<section class="contact-layout upgraded-contact">
+    <div class="content-card contact-info-card">
+        <h2>3RV Stādi</h2>
+        <p><strong>E-pasts:</strong> <a href="mailto:{{ contacts.email }}">{{ contacts.email }}</a></p>
+        <p><strong>Telefons:</strong> <a href="tel:+371{{ contacts.phone }}">{{ contacts.phone }}</a></p>
+        <p><strong>Adrese:</strong> {{ contacts.address }}</p>
+        <p><strong>Darba laiks:</strong> {{ contacts.hours }}</p>
+<div class="quick-buttons">
+            <a class="button primary" href="https://wa.me/{{ contacts.phone_international }}" target="_blank" rel="noopener">💬 WhatsApp</a>
+            <a class="button secondary" href="{{ contacts.facebook }}" target="_blank" rel="noopener">📘 Facebook</a>
+            <a class="button secondary" href="{{ contacts.tiktok }}" target="_blank" rel="noopener">🎵 TikTok</a>
+        </div>
+<div class="map-card">
+            <h3>Lokācija</h3>
+            <p>Valgunde, Priežu iela 10</p>
+            <div class="map-placeholder">
+                <span>📍</span>
+                <strong>3RV Stādi</strong>
+                <small>Atvērt maršrutu kartē</small>
+            </div>
+            <div class="quick-buttons">
+                <a class="button primary" href="{{ contacts.google_maps }}" target="_blank" rel="noopener">🗺️ Google Maps</a>
+                <a class="button secondary" href="{{ contacts.waze }}" target="_blank" rel="noopener">🚗 Waze</a>
+            </div>
+        </div>
+    </div>
+<form class="content-card contact-form" method="post">
+        <h2>Uzdot jautājumu</h2>
+        <p class="hint">Norādi e-pastu vai telefona numuru, lai varam tev atbildēt.</p>
+        <input type="text" name="name" placeholder="Vārds" required>
+        <input type="text" name="contact" placeholder="E-pasts vai telefona numurs" required>
+        <textarea name="message" rows="7" placeholder="Jautājums vai ziņa" required></textarea>
+        <button class="button primary" type="submit">Nosūtīt ziņojumu</button>
+    </form>
+</section>
+{% endblock %}

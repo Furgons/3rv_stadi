@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Admin panelis - 3RV Stādi{% endblock %}
+{% block content %}
+<section class="content-card">
+    <div class="row-between">
+        <div>
+            <h1>Admin panelis</h1>
+            <p>Šī sadaļa klientiem navigācijā nav redzama. Tai var piekļūt tikai ar tiešu adresi un paroli.</p>
+        </div>
+<div class="admin-actions">
+            <a class="button primary" href="{{ url_for('admin_products') }}">Pārvaldīt tomātus</a>
+            <a class="button secondary" href="{{ url_for('admin_inquiries') }}">Jautājumi</a>
+        </div>
+    </div>
+</section>
+<section class="admin-stats">
+    <div><strong>{{ product_count }}</strong><span>Tomāti</span></div>
+    <div><strong>{{ unavailable_count }}</strong><span>Nav pieejami</span></div>
+    <div><strong>{{ category_count }}</strong><span>Kategorijas</span></div>
+    <div><strong>{{ inquiry_count }}</strong><span>Jauni jautājumi</span></div>
+</section>
+{% endblock %}

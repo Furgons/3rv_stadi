@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Sākums - 3RV Stādi{% endblock %}
+{% block content %}
+<section class="home-intro calm-home">
+    <div class="home-copy">
+        <p class="eyebrow">Stādi Valgundē</p>
+        <h1>3RV Stādi</h1>
+        <p>Ģimenes stādaudzētava Valgundē, kur audzējam tomātus, puķes, garšaugus, zemenes, piparus, papriku un citus sezonālus augus. Šobrīd mājaslapā apskatāms tomātu šķirņu katalogs, bet pārējais piedāvājums tiks papildināts nākotnē.</p>
+        <div class="hero-actions">
+            <a class="button primary" href="{{ url_for('products_index') }}">Apskatīt tomātus</a>
+            <a class="button secondary" href="{{ url_for('about') }}">Par mums</a>
+        </div>
+    </div>
+    <div class="home-photo-card">
+        <img src="{{ url_for('static', filename='images/about/siltumnica_ar_stadiem.jpg') }}" alt="3RV Stādi siltumnīca">
+        <div>
+            <strong>{{ total_products }}</strong>
+            <p>tomātu šķirnes katalogā</p>
+            <p><span>{{ available_products }}</span> pašlaik pieejamas</p>
+        </div>
+    </div>
+</section>
+<section class="section info-grid two-cards">
+    <article class="info-card">
+        <h2>Kā izvēlēties piemērotu tomātu?</h2>
+        <p>Sadaļā “Tomāti” vari izmantot filtrus pēc stādīšanas vietas, augstuma, krāsas, augļa izmēra, ražošanas laika un pieejamības. Katras šķirnes lapā redzams arī precīzs augstums un augļa svars.</p>
+    </article>
+    <article class="info-card">
+        <h2>Saziņa pirms iegādes</h2>
+        <p>Ja interesē konkrēta šķirne vai vēlies pajautāt par pieejamību, vari sazināties pa telefonu, e-pastu, WhatsApp vai kontaktu formu.</p>
+    </article>
+</section>
+{% endblock %}

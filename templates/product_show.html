@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}{{ product['name'] }} - 3RV Stādi{% endblock %}
+{% block content %}
+<section class="product-show compact-product-show">
+    <div class="product-image-panel">
+        <img src="{{ url_for('static', filename='images/products/' + product['image']) }}" alt="{{ product['name'] }}">
+    </div>
+    <div class="product-info">
+        <p class="eyebrow">Tomātu stāds</p>
+        <h1>{{ product['name'] }}</h1>
+        <p>{{ product['description'] }}</p>
+<dl class="details-list">
+            <div><dt>Cena</dt><dd>{{ "%.2f"|format(product['price']) }} €</dd></div>
+            <div><dt>Pieejamība</dt><dd>{% if product['available'] %}Pieejams{% else %}Nav pieejams{% endif %}</dd></div>
+            <div><dt>Precīzs augstums</dt><dd>{{ product['exact_height'] if product['exact_height'] else 'Vēl nav norādīts' }}</dd></div>
+            <div><dt>Augļa svars</dt><dd>{{ product['fruit_weight'] if product['fruit_weight'] else 'Vēl nav norādīts' }}</dd></div>
+        </dl>
+<div class="category-blocks">
+            {% for group in groups %}
+            <div>
+                <h2>{{ group['name'] }}</h2>
+                <div class="category-list">
+                    {% for category in categories_by_group_name[group['name']] %}
+                    <span>{{ category['name'] }}</span>
+                    {% else %}
+                    <span class="muted-pill">Nav norādīts</span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <a class="button primary" href="{{ url_for('contacts') }}">Sazināties par šo tomātu</a>
+    </div>
+</section>
+{% endblock %}

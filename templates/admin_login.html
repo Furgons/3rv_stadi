@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Admin pieslēgšanās - 3RV Stādi{% endblock %}
+{% block content %}
+<form class="content-card small-form" method="post">
+    <h1>Admin panelis</h1>
+    <input type="text" name="username" placeholder="Lietotājvārds" required>
+    <input type="password" name="password" placeholder="Parole" required>
+    <button class="button primary" type="submit">Pieslēgties</button>
+</form>
+{% endblock %}

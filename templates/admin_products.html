@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Tomātu pārvaldība - 3RV Stādi{% endblock %}
+{% block content %}
+<section class="content-card row-between">
+    <div>
+        <h1>Tomātu pārvaldība</h1>
+        <p>Pievieno, labo vai dzēs tomātu stādus.</p>
+    </div>
+    <a class="button primary" href="{{ url_for('admin_product_create') }}">Pievienot tomātu</a>
+</section>
+<div class="table-wrap">
+    <table>
+        <thead>
+            <tr>
+                <th>Nosaukums</th>
+                <th>Cena</th>
+                <th>Pieejamība</th>
+                <th>Darbības</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product['name'] }}</td>
+                <td>{{ "%.2f"|format(product['price']) }} €</td>
+                <td>{% if product['available'] %}Pieejams{% else %}Nav pieejams{% endif %}</td>
+                <td>
+                    <div class="table-actions">
+                        <a class="button small" href="{{ url_for('product_show', product_id=product['id']) }}">Skatīt</a>
+                        <a class="button small secondary" href="{{ url_for('admin_product_edit', product_id=product['id']) }}">Labot</a>
+                        <form method="post" action="{{ url_for('admin_product_delete', product_id=product['id']) }}" onsubmit="return confirm('Vai tiešām dzēst šo tomātu?');">
+                            <button class="button small danger" type="submit">Dzēst</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

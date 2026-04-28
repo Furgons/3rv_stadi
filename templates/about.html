@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Par mums - 3RV Stādi{% endblock %}
+{% block content %}
+<section class="about-hero">
+    <div class="content-card about-intro-card">
+        <p class="eyebrow">Par mums</p>
+        <h1>3RV Stādi</h1>
+        <p>3RV Stādi ir ģimenes stādaudzētava Valgundē, kur stādu audzēšana nav tikai darbs, bet arī ģimenes pieredze vairākās paaudzēs. SIA “3RV” darbība sākās 2024. gadā, taču stādu audzēšanas prasmes ģimenē ir nodotas pašlaik jau 3. un 4. paaudzē.</p>
+        <p>Nosaukumu “3RV” katrs var uztvert citādi, un tieši tas to padara īpašu. Mums tas saistās ar ģimeni, darbu, attīstību un vietu, kur aug ne tikai stādi, bet arī idejas nākotnei.</p>
+        <div class="hero-actions">
+            <a class="button primary" href="{{ url_for('products_index') }}">Apskatīt tomātus</a>
+            <a class="button secondary" href="{{ url_for('contacts') }}">Sazināties</a>
+        </div>
+    </div>
+    <img class="about-hero-image" src="{{ url_for('static', filename='images/about/siltumnica_ar_stadiem.jpg') }}" alt="3RV Stādi siltumnīca ar augiem">
+</section>
+
+<section class="about-grid">
+    <article class="info-card">
+        <h2>Ko audzējam?</h2>
+        <p>Mūsu audzētavā tiek audzēti dažādi sezonāli augi: tomātu stādi, puķes, garšaugi, pipari, paprika, ziemcietes un citi augi mājas dārziem, siltumnīcām un pagalmiem.</p>
+    </article>
+    <article class="info-card">
+        <h2>Sezona</h2>
+        <p>3RV Stādi darbojas no aprīļa līdz oktobrim. Sezonas sākumā un beigās piedāvājumā vairāk ir ziemcietes, savukārt pārējā sezonas laikā pieejams plašāks stādu un augu klāsts.</p>
+    </article>
+    <article class="info-card">
+        <h2>Uz vietas Valgundē</h2>
+        <p>Klienti var atbraukt pie mums uz vietas Valgundē, apskatīt piedāvājumu un izvēlēties piemērotākos stādus. Nepieciešamības gadījumā par piegādi iespējams vienoties individuāli.</p>
+    </article>
+</section>
+
+<section class="content-card about-story-card">
+    <p class="eyebrow">Mūsu audzētava</p>
+    <h2>No siltumnīcas būvniecības līdz stādiem</h2>
+    <p>Mēs paši attīstām savu audzētavu - būvējam un iekārtojam siltumnīcas, rūpējamies par augiem un soli pa solim paplašinām piedāvājumu. Pašlaik audzētavā ir trīs siltumnīcas, kurās tiek audzēti gan tomātu stādi, gan citi sezonāli augi.</p>
+    <p>Pirmās siltumnīcas būvniecība bija nozīmīgs solis 3RV Stādi attīstībā. No pirmajām konstrukcijām līdz pilnām audzēšanas rindām — katrs posms ir daļa no mūsu stāsta.</p>
+</section>
+
+<section class="about-gallery" aria-label="Siltumnīcas būvniecības un audzētavas attēli">
+    <img src="{{ url_for('static', filename='images/about/buvnieciba_1.jpg') }}" alt="Siltumnīcas koka konstrukcijas būvniecība">
+    <img src="{{ url_for('static', filename='images/about/buvnieciba_2.jpg') }}" alt="Siltumnīcas būvniecības process">
+    <img src="{{ url_for('static', filename='images/about/buvnieciba_3.jpg') }}" alt="Pirmā siltumnīca no ārpuses">
+    <img src="{{ url_for('static', filename='images/about/tomatu_stadi_siltumnica.jpg') }}" alt="Tomātu stādi siltumnīcā">
+    <img src="{{ url_for('static', filename='images/about/pukes_un_stadi.jpg') }}" alt="Puķes un stādi siltumnīcā">
+    <img src="{{ url_for('static', filename='images/about/siltumnica_iekspuse.jpg') }}" alt="Siltumnīcas iekšpuse ar koka konstrukcijām">
+</section>
+
+<section class="content-card media-card">
+    <p class="eyebrow">3RV Stādi medijos</p>
+    <h2>“Zemgales Ziņas” par 3RV</h2>
+    <p>2025. gada 8. maijā vietējā avīzē “Zemgales Ziņas” publicēts raksts “Audzē stādus trešajā paaudzē” par SIA “3RV” stādaudzētavu. Rakstā uzsvērts ģimenes darbs, paaudžu pieredze un plašais audzēto stādu klāsts.</p>
+</section>
+{% endblock %}

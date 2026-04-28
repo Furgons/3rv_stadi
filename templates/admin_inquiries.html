@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Jautājumi - 3RV Stādi{% endblock %}
+{% block content %}
+<section class="content-card">
+    <div class="row-between">
+        <div>
+            <h1>Klientu jautājumi</h1>
+            <p>Šeit parādās jautājumi, ko klienti iesūta kontaktu sadaļā.</p>
+        </div>
+        <a class="button secondary" href="{{ url_for('admin_dashboard') }}">Atpakaļ</a>
+    </div>
+</section>
+<div class="table-wrap">
+    <table>
+        <thead>
+            <tr>
+                <th>Datums</th>
+                <th>Vārds</th>
+                <th>Kontakts</th>
+                <th>Ziņa</th>
+                <th>Statuss</th>
+                <th>Darbība</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in inquiries %}
+            <tr>
+                <td>{{ item['created_at'] }}</td>
+                <td>{{ item['name'] }}</td>
+                <td>{{ item['contact'] }}</td>
+                <td>{{ item['message'] }}</td>
+                <td>{{ item['status'] }}</td>
+                <td>
+                    {% if item['status'] != 'Apstrādāts' %}
+                    <form method="post" action="{{ url_for('admin_inquiry_mark_done', inquiry_id=item['id']) }}">
+                        <button class="button small primary" type="submit">Atzīmēt kā apstrādātu</button>
+                    </form>
+                    {% else %}
+                    —
+                    {% endif %}
+                </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="6">Vēl nav jautājumu.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
